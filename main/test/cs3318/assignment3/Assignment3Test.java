@@ -45,4 +45,15 @@ public class Assignment3Test {
         assertFalse(tester.passwordContainsSpecial(testPassword));
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"th1sh4s4numb3r", "h3ll0th3r3", "7digits"})
+    public void checkContainsNumber(String testPassword) {
+        assertTrue(tester.passwordContainsNumber(testPassword));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"thishasanumber", "hellothere", "sevendigits"})
+    public void checkNotContainsNumber(String testPassword) {
+        assertFalse(tester.passwordContainsNumber(testPassword));
+    }
 }
