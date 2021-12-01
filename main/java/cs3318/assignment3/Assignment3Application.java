@@ -55,4 +55,9 @@ public class Assignment3Application extends Application {
         Matcher matcher = PASSWORD_CONTAINS_LETTER.matcher(testPassword);
         return matcher.find();
     }
+
+
+    public boolean isValidPassword(String testPassword) {
+        return (checkPasswordLength(testPassword) && passwordContainsSpecial(testPassword) && passwordContainsNumber(testPassword) && passwordContainsLetter(testPassword));
+    }
 }
