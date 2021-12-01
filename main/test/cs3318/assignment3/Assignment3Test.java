@@ -56,4 +56,16 @@ public class Assignment3Test {
     public void checkNotContainsNumber(String testPassword) {
         assertFalse(tester.passwordContainsNumber(testPassword));
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1234a56", "2H", "c"})
+    public void checkContainsLetter(String testPassword) {
+        assertTrue(tester.passwordContainsLetter(testPassword));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"123456", "2", ""})
+    public void checkNotContainsLetter(String testPassword) {
+        assertFalse(tester.passwordContainsLetter(testPassword));
+    }
 }
