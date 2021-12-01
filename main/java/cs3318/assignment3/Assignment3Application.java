@@ -49,4 +49,10 @@ public class Assignment3Application extends Application {
         Matcher matcher = PASSWORD_CONTAINS_NUMBER.matcher(testPassword);
         return matcher.find();
     }
+
+    public boolean passwordContainsLetter(String testPassword) {
+        final Pattern PASSWORD_CONTAINS_LETTER = Pattern.compile("[A-Z]", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = PASSWORD_CONTAINS_LETTER.matcher(testPassword);
+        return matcher.find();
+    }
 }
