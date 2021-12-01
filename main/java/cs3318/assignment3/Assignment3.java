@@ -10,7 +10,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class Assignment3 extends Application {
+public class Assignment3Application extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         primaryStage.setTitle("Registration Form");
@@ -23,8 +23,9 @@ public class Assignment3 extends Application {
     public static void main(String[] args) {
         launch();
     }
-    
-    public boolean checkEmail(String testEmail) throws IllegalArgumentException {
+
+
+    public boolean checkEmail(String testEmail) {
         final Pattern VALID_EMAIL_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
         Matcher matcher = VALID_EMAIL_REGEX.matcher(testEmail);
         if (!matcher.find()) {
@@ -33,4 +34,7 @@ public class Assignment3 extends Application {
         return true;
     }
 
+    public boolean checkPasswordLength(String testPassword) {
+        return testPassword.length() >= 7;
+    }
 }
