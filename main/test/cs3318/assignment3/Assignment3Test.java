@@ -68,4 +68,16 @@ public class Assignment3Test {
     public void checkNotContainsLetter(String testPassword) {
         assertFalse(tester.passwordContainsLetter(testPassword));
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"this15avalidpa55w*rd", "7dig!ts", "l0ngp@ssword"})
+    public void checkValidPassword(String testPassword) {
+        assertTrue(tester.isValidPassword(testPassword));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"this15avalidpa55w0rd", "7digits", "l0ngp4ssword"})
+    public void checkInvalidPassword(String testPassword) {
+        assertFalse(tester.isValidPassword(testPassword));
+    }
 }
