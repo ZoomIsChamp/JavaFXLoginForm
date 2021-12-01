@@ -36,5 +36,13 @@ public class Assignment3 extends Application {
     public static void main(String[] args) {
         launch();
     }
+    
+    public boolean checkEmail(String testEmail) throws IllegalArgumentException {
+        final Pattern VALID_EMAIL_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = VALID_EMAIL_REGEX.matcher(testEmail);
+        if (!matcher.find()) {
+            throw new IllegalArgumentException("Invalid Email Address");
+        }
+    }
 
 }
