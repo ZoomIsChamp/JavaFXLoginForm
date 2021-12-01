@@ -7,30 +7,42 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 public class Assignment3Test {
-    final static Assignment3 tester = new Assignment3();
-    
+    final static Assignment3Application tester = new Assignment3Application();
+
     @ParameterizedTest
     @ValueSource(strings = {"", "@gmail.com", "abc@.com", "fake email@address.com"})
     public void rejectsInvalidEmail(String testEmail) {
         assertThrows(IllegalArgumentException.class, () -> { tester.checkEmail(testEmail); });
     }
-    
+
     @ParameterizedTest
     @ValueSource(strings = {"abc@gmail.com", "xyz@123.com", "real@address.co.uk", "real.email@address.ie"})
     public void acceptsValidEmail(String testEmail) {
         assertTrue(tester.checkEmail(testEmail));
     }
-    
+
     @ParameterizedTest
     @ValueSource(strings = {"abc123", "6digit", "2short", ""})
     public void rejectsInvalidLength(String testPassword) {
         assertFalse(tester.checkPasswordLength(testPassword));
     }
-    
+
     @ParameterizedTest
     @ValueSource(strings = {"thispasswordisplentylongenough", "7digits", "l0ngp455w0rd5"})
     public void acceptsValidLength(String testPassword) {
         assertTrue(tester.checkPasswordLength(testPassword));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"hello*there", "abc@123", "!!what!!"})
+    public void checkContainsCharacters(String testPassword) {
+        assertTrue(tester.passwordContainsSpecial(testPassword));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"thispasswordisplentylongenough", "7digits", "l0ngp455w0rd5"})
+    public void checkNotContainsCharacters(String testPassword) {
+        assertFalse(tester.passwordContainsSpecial(testPassword));
     }
 
 }
