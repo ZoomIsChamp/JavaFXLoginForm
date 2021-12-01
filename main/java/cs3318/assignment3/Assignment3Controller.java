@@ -8,13 +8,24 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class Assignment3Controller {
-    public TextField emailField;
-    public PasswordField passwordField;
-    public Button registerButton;
-    public Label responseLabel;
+    @FXML public TextField emailField;
+    @FXML public PasswordField passwordField;
+    @FXML public Button registerButton;
+    @FXML public Label responseLabel;
 
 
     public void register(ActionEvent actionEvent) {
-        Assignment3 form = new Assignment3();
+        String password = passwordField.getText();
+        String email = emailField.getText();
+        User tester = new User(email, password);
+        if (tester.checkEmail(email) && tester.isValidPassword(password)) {
+            responseLabel.setText("Valid user created");
+        } else if (tester.checkEmail(email) && !tester.isValidPassword(password)) {
+            responseLabel.setText("Invalid password");
+        } else if (!tester.checkEmail(email) && tester.isValidPassword(password)) {
+            responseLabel.setText("Invalid email");
+        } else {
+            responseLabel.setText("Invalid email and password");
+        }
     }
 }
