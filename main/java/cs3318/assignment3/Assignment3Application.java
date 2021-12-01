@@ -43,4 +43,10 @@ public class Assignment3Application extends Application {
         Matcher matcher = PASSWORD_CONTAINS.matcher(testPassword);
         return matcher.find();
     }
+
+    public boolean passwordContainsNumber(String testPassword) {
+        final Pattern PASSWORD_CONTAINS_NUMBER = Pattern.compile("\\d");
+        Matcher matcher = PASSWORD_CONTAINS_NUMBER.matcher(testPassword);
+        return matcher.find();
+    }
 }
