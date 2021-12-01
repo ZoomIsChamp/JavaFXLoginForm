@@ -37,4 +37,10 @@ public class Assignment3Application extends Application {
     public boolean checkPasswordLength(String testPassword) {
         return testPassword.length() >= 7;
     }
+
+    public boolean passwordContainsSpecial(String testPassword) {
+        final Pattern PASSWORD_CONTAINS = Pattern.compile("[*^&@!]+");
+        Matcher matcher = PASSWORD_CONTAINS.matcher(testPassword);
+        return matcher.find();
+    }
 }
